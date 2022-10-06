@@ -1,0 +1,54 @@
+// minmax5
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	var n int
+	fmt.Println("enter n:")
+	fmt.Scan(&n)
+
+	ns := make([]N, 0)
+	for i := 0; i < n; i++ {
+		n := enter()
+		ns = append(ns, n)
+	}
+
+	plmax := 0.0
+	for i := 0; i < n; i++ {
+		ploc := pl(ns[i])
+		if ploc > plmax {
+			plmax = ploc
+		}
+	}
+
+	nums := make([]int, 0)
+	for i := 0; i < n; i++ {
+		ploc := pl(ns[i])
+		if ploc == plmax {
+			nums = append(nums, i)
+		}
+	}
+
+	fmt.Println("numbers of sets with max pl: ", nums)
+	fmt.Println("max pl is ", plmax)
+
+}
+
+func enter() N {
+	var v, m int
+	fmt.Scan(&m, &v)
+	return N{m, v}
+}
+
+type N struct {
+	m int
+	v int
+}
+
+func pl(n N) float64 {
+	p := float64(n.m) / float64(n.v)
+	return p
+}
