@@ -1,0 +1,25 @@
+func longestCommonPrefix(strs []string) string {
+	r := ""
+	l := len(strs[0])
+	for _, el := range strs {
+		if len(el) < l {
+			l = len(el)
+		}
+	}
+	for c := 0; c < l; c++ {
+		ch := strs[0][c : c+1]
+		cnt := 0
+		for _, element := range strs {
+			if element[c:c+1] == ch {
+				cnt = cnt + 1
+            } else {
+                return r
+            }
+		}
+		if cnt == len(strs) {
+			r = r + ch
+		}
+	}
+
+	return r
+}
