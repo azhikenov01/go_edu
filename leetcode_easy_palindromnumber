@@ -1,0 +1,16 @@
+func isPalindrome(x int) bool {
+	r1 := x
+	n := make([]int, 0)
+	for x > 0 {
+		n = append(n, int(x%10))
+		x = x / 10
+	}
+	r := 0
+	for i := 0; i < len(n); i++ {
+		r = 10*r + n[i]
+	}
+	if r == r1 {
+		return true
+	}
+	return false
+}
