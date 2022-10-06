@@ -1,0 +1,50 @@
+// matrix5
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	var m, n, d int
+
+	fmt.Println("enter m")
+	fmt.Scan(&m)
+	fmt.Println("enter n")
+	fmt.Scan(&n)
+	fmt.Println("enter d")
+	fmt.Scan(&d)
+	fmt.Println("enter array ms")
+	ms := make([]int, m)
+	for i := 0; i < m; i++ {
+		fmt.Println("enter ms[i]")
+		fmt.Scan(&ms[i])
+	}
+
+	fmt.Println("result is")
+
+	res := array(ms, n, d)
+
+	for i := 0; i < m; i++ {
+		for j := 0; j < n; j++ {
+			fmt.Print(res[j][i], " ")
+		}
+		fmt.Printf("\n")
+	}
+
+}
+
+func array(as []int, n int, d int) [][]int {
+	ar := make([][]int, n)
+	for i := 0; i < n; i++ {
+		if i == 0 {
+			ar[i] = as
+		} else {
+			ar[i] = make([]int, len(ar[i-1]))
+			for j := 0; j < len(ar[i-1]); j++ {
+				ar[i][j] = ar[i-1][j] + d
+			}
+		}
+	}
+	return ar
+}
