@@ -1,0 +1,30 @@
+// array16
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	ar := array()
+
+	ar_r := make([]int, 0)
+	for i := 0; i < len(ar); i++ {
+		ar_r = append(ar_r, ar[i])
+		ar_r = append(ar_r, ar[len(ar)-1-i])
+	}
+	fmt.Println(ar_r)
+}
+
+func array() []int {
+	var n int
+	fmt.Println("enter n: ")
+	fmt.Scan(&n)
+	ar := make([]int, n)
+	var el int
+	for i := 0; i < n; i++ {
+		fmt.Scan(&el)
+		ar[i] = el
+	}
+	return ar
+}
