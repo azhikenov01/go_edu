@@ -1,0 +1,36 @@
+// array95
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	var n int
+	fmt.Println("enter n")
+	fmt.Scan(&n)
+	a := array(n)
+
+	b := make([]int, 0)
+	for i := 0; i < len(a)-1; i++ {
+		if a[i] != a[i+1] {
+			b = append(b, a[i])
+		}
+		if a[i] == a[i+1] && i == len(a)-2 {
+			b = append(b, a[i])
+		}
+	}
+
+	fmt.Println(b)
+
+}
+
+func array(n int) []int {
+	ar := make([]int, n)
+	var el int
+	for i := 0; i < n; i++ {
+		fmt.Scan(&el)
+		ar[i] = el
+	}
+	return ar
+}
